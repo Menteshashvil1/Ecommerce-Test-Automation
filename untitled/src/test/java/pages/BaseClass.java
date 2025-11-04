@@ -15,7 +15,7 @@ public class BaseClass {
     protected ConfigDataClass conf;
 
     @BeforeClass(alwaysRun = true)
-    public void setup() throws FileNotFoundException {
+    public void setup() throws FileNotFoundException, InterruptedException {
         // Load config
         conf = new ConfigDataClass();
 
@@ -24,6 +24,7 @@ public class BaseClass {
         String url     = System.getProperty("url", conf.getUrl());
 
         // Start browser
+
         driver = BrowserFactory.startApplication(driver, browser, url);
     }
 
