@@ -18,7 +18,13 @@ public class BrowserFactory {
             case "chrome" -> {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                driver = new ChromeDriver();
+                options.addArguments("--disable-blink-features=AutomationControlled");
+                options.addArguments("--no-sandbox"); // Often useful in headless environments
+                options.addArguments("--disable-dev-shm-usage"); // Often useful in headless environments
+                options.addArguments("--disable-gpu"); // Often useful in headless environments
+                options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+                options.setExperimentalOption("useAutomationExtension", false);
+                driver = new ChromeDriver(options);
             }
             case "firefox" -> {
                 WebDriverManager.firefoxdriver().setup();
