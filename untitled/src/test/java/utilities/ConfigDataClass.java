@@ -25,4 +25,10 @@ public class ConfigDataClass {
     public String getUrl(){
         return pro.getProperty("url");
     }
+    public String getEmail(){
+        return pro.getProperty("email");
+    }
+    public String getPassword(){
+        return pro.getProperty("password");
+    }
 }
